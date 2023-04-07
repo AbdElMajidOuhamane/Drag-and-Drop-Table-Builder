@@ -13,6 +13,7 @@ function App() {
   console.log(inputs)
   function handlerOnDrag(e,information){
     e.dataTransfer.setData("information",information)
+
     
   }
 
@@ -26,9 +27,14 @@ function App() {
 
 
   function handleOnDrop(e){
+    if(changeValue.length>0){
     const information=e.dataTransfer.getData("information");
     setInputs([...inputs,information])
+    setChangeValue("")
     setIsInputOpen(false)
+    }
+   
+    
     
   }
 
@@ -39,7 +45,9 @@ function App() {
   }
   return (
     <Container fixed >
-      <Box 
+      <Box
+      maxHeight="400px"
+      overflow="auto"
          sx={{
               display: 'grid',
               gap: 1,
